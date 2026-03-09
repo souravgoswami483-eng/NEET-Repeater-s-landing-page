@@ -1002,6 +1002,23 @@ select {
     -webkit-overflow-scrolling: touch;
     border: 1px solid #0B3D91;
     margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.table-subtitle {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.table-subtitle:first-of-type {
+    margin-top: 30px;
 }
 
 .programme-table {
