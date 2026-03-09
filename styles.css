@@ -1007,10 +1007,9 @@ select {
 .programme-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px;
     font-size: 0.95rem;
     background: #fff;
-    border: 1px solid #000;
+    border: 1px solid #0B3D91;
 }
 
 .programme-table thead th {
@@ -1018,7 +1017,7 @@ select {
     color: #fff;
     font-family: Arial, sans-serif;
     font-weight: bold;
-    padding: 8px 12px;
+    padding: 12px 15px;
     text-align: left;
     border: 1px solid #fff;
 }
@@ -1028,23 +1027,25 @@ select {
 }
 
 .programme-table tbody td {
-    padding: 8px 12px;
-    border: 1px solid #000;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
     vertical-align: middle;
 }
 
+.programme-table thead th.table-header-label,
 .programme-table tbody td.table-label {
     font-family: Arial, sans-serif;
     font-weight: bold;
     color: #fff;
     background: #0B3D91;
-    width: 20%;
-    border-color: #fff;
+    width: 25%;
+    min-width: 160px;
+    border: 1px solid #fff;
 }
 
 .programme-table tbody td.table-value {
     color: #111;
-    line-height: 1.4;
+    line-height: 1.5;
     text-align: left;
 }
 
@@ -2537,6 +2538,37 @@ select {
 
     .exp-number {
         font-size: 1.6rem;
+    }
+
+    .programme-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 1.5px solid #0B3D91;
+        margin-top: 15px;
+        border-radius: 4px;
+    }
+
+    .programme-table {
+        width: 100%;
+        min-width: 420px;
+        /* Slight scroll for readability on very small screens */
+        border-collapse: collapse;
+    }
+
+    .programme-table thead th,
+    .programme-table tbody td {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+    }
+
+    .programme-table thead th.table-header-label,
+    .programme-table tbody td.table-label {
+        width: 35%;
+        min-width: 120px;
+    }
+
+    .programme-table tbody td.table-value {
+        padding: 8px;
     }
 
     .marquee-item {
