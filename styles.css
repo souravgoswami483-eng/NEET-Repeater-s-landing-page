@@ -1024,7 +1024,7 @@ select {
 .programme-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     background: #fff;
     border: 1px solid #0B3D91;
 }
@@ -1034,7 +1034,7 @@ select {
     color: #fff;
     font-family: Arial, sans-serif;
     font-weight: bold;
-    padding: 12px 15px;
+    padding: 8px 12px;
     text-align: left;
     border: 1px solid #fff;
 }
@@ -1044,7 +1044,7 @@ select {
 }
 
 .programme-table tbody td {
-    padding: 12px 15px;
+    padding: 8px 12px;
     border: 1px solid #ddd;
     vertical-align: middle;
 }
@@ -1056,7 +1056,7 @@ select {
     color: #fff;
     background: #0B3D91;
     width: 25%;
-    min-width: 160px;
+    min-width: 140px;
     border: 1px solid #fff;
 }
 
@@ -2560,32 +2560,32 @@ select {
     .programme-table-wrapper {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        border: 1.5px solid #0B3D91;
-        margin-top: 15px;
+        border: 1px solid #0B3D91;
+        margin: 15px 0 25px;
         border-radius: 4px;
+        background: #fff;
     }
 
     .programme-table {
         width: 100%;
-        min-width: 420px;
-        /* Slight scroll for readability on very small screens */
+        min-width: 650px;
         border-collapse: collapse;
     }
 
     .programme-table thead th,
     .programme-table tbody td {
-        padding: 10px 8px;
+        padding: 8px 10px;
         font-size: 0.8rem;
+        border: 1px solid #ddd;
     }
 
     .programme-table thead th.table-header-label,
     .programme-table tbody td.table-label {
-        width: 35%;
-        min-width: 120px;
-    }
-
-    .programme-table tbody td.table-value {
-        padding: 8px;
+        width: 25%;
+        min-width: 130px;
+        background: #0B3D91;
+        color: #fff;
+        border: 1px solid #fff;
     }
 
     .marquee-item {
