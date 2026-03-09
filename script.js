@@ -1,9 +1,3 @@
-// ===== PRELOADER =====
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.getElementById('preloader').classList.add('hide');
-    }, 2200);
-});
 
 // ===== PARTICLES =====
 function createParticles() {
@@ -131,31 +125,99 @@ animateCounters();
 const contactForm = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Button loading state
-    submitBtn.innerHTML = '<span>Submitting...</span><i class="fas fa-spinner fa-spin"></i>';
-    submitBtn.disabled = true;
-    
-    // Simulate submission
-    setTimeout(() => {
-        submitBtn.innerHTML = '<span>Submitted Successfully!</span><i class="fas fa-check"></i>';
-        submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-        
-        // Reset after 3 seconds
-        setTimeout(() => {
-            contactForm.reset();
-            submitBtn.innerHTML = '<span>Submit Enquiry</span><i class="fas fa-paper-plane"></i>';
-            submitBtn.style.background = '';
-            submitBtn.disabled = false;
-        }, 3000);
-    }, 1500);
-});
+const heroContactForm = document.getElementById('heroContactForm');
+const heroSubmitBtn = document.getElementById('heroSubmitBtn');
+
+function handleFormSubmit(form, btn) {
+    if (form && btn) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            btn.innerHTML = '<span>Submitting...</span><i class="fas fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<span>Submitted Successfully!</span><i class="fas fa-check"></i>';
+                btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                setTimeout(() => {
+                    form.reset();
+                    btn.innerHTML = '<span>Get OTP</span>';
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        });
+    }
+}
+
+handleFormSubmit(contactForm, submitBtn);
+handleFormSubmit(heroContactForm, heroSubmitBtn);
+
+// ===== MODAL HANDLING =====
+const enrollModal = document.getElementById('enrollModal');
+const closeModalBtn = document.getElementById('closeModal');
+const ctaButtons = document.querySelectorAll('a[href="#contact"]');
+
+if (enrollModal && closeModalBtn) {
+    ctaButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            enrollModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Close mobile menu if opened via CTA
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            if (navToggle && navMenu) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        enrollModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    enrollModal.addEventListener('click', (e) => {
+        if (e.target === enrollModal) {
+            enrollModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    const modalContactForm = document.getElementById('modalContactForm');
+    const modalSubmitBtn = document.getElementById('modalSubmitBtn');
+
+    if (modalContactForm) {
+        modalContactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            modalSubmitBtn.innerHTML = '<span>Submitting...</span><i class="fas fa-spinner fa-spin"></i>';
+            modalSubmitBtn.disabled = true;
+
+            setTimeout(() => {
+                modalSubmitBtn.innerHTML = '<span>Submitted Successfully!</span><i class="fas fa-check"></i>';
+                modalSubmitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+
+                setTimeout(() => {
+                    modalContactForm.reset();
+                    modalSubmitBtn.innerHTML = '<span>Submit Enquiry</span><i class="fas fa-paper-plane"></i>';
+                    modalSubmitBtn.style.background = '';
+                    modalSubmitBtn.disabled = false;
+
+                    enrollModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }, 3000);
+            }, 1500);
+        });
+    }
+}
 
 // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        // Skip links meant for modals
+        if (this.getAttribute('href') === '#contact') return;
+
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -194,12 +256,4 @@ if (window.innerWidth > 768) {
     });
 }
 
-// ===== TYPING EFFECT FOR HERO (optional subtle touch) =====
-const heroTitle = document.querySelector('.hero-title');
-if (heroTitle) {
-    heroTitle.style.opacity = '0';
-    setTimeout(() => {
-        heroTitle.style.transition = 'opacity 1s ease';
-        heroTitle.style.opacity = '1';
-    }, 2200);
-}
+
