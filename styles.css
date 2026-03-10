@@ -982,7 +982,7 @@ select {
 
 .programme-details-title {
     font-family: var(--font-primary);
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-size: clamp(2.24rem, 4.9vw, 3.08rem);
     font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 20px;
