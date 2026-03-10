@@ -1000,70 +1000,147 @@ select {
 .programme-table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    border: 1px solid #0B3D91;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    border: none;
+    border-radius: 0;
+    margin-top: 24px;
+    margin-bottom: 44px;
+    background: transparent;
 }
 
 .table-subtitle {
     font-family: var(--font-primary);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 800;
-    color: var(--primary);
-    margin-top: 50px;
-    margin-bottom: 20px;
+    color: #1a1a2e;
+    margin-top: 54px;
+    margin-bottom: 10px;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.table-subtitle::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #5aacdb;
+    border-radius: 2px;
+    margin: 10px auto 0;
 }
 
 .table-subtitle:first-of-type {
-    margin-top: 30px;
+    margin-top: 34px;
 }
 
 .programme-table {
     width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    background: #fff;
-    border: 1px solid #0B3D91;
+    border-collapse: separate;
+    border-spacing: 8px;
+    font-size: 0.95rem;
+    background: transparent;
 }
 
 .programme-table thead th {
-    background: #0B3D91;
+    background: #2E86C1;
     color: #fff;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    padding: 8px 12px;
-    text-align: left;
-    border: 1px solid #fff;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    padding: 16px 24px;
+    text-align: center;
+    border: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    border-radius: 6px;
+}
+
+.programme-table thead th:last-child {
+    border-right: none;
 }
 
 .programme-table thead th.table-header-value {
     text-align: center;
 }
 
-.programme-table tbody td {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    vertical-align: middle;
+.programme-table tbody tr {
+    transition: none;
+    background: transparent;
 }
 
-.programme-table thead th.table-header-label,
-.programme-table tbody td.table-label {
-    font-family: Arial, sans-serif;
-    font-weight: bold;
+.programme-table tbody tr:hover {
+    background: transparent;
+}
+
+.programme-table tbody tr:nth-child(even) {
+    background: transparent;
+}
+
+.programme-table tbody tr:nth-child(even):hover {
+    background: transparent;
+}
+
+.programme-table tbody td {
+    padding: 18px 24px;
+    border: none;
+    vertical-align: middle;
+    background: #EBF5FB;
+    border-radius: 6px;
+}
+
+.programme-table tbody td:last-child {
+    border-right: none;
+}
+
+.programme-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.programme-table thead th.table-header-label {
+    font-family: var(--font-primary);
+    font-weight: 600;
     color: #fff;
-    background: #0B3D91;
+    background: #2E86C1;
     width: 25%;
-    min-width: 140px;
-    border: 1px solid #fff;
+    min-width: 160px;
+    border: none;
+    letter-spacing: 0.3px;
+    font-size: 0.95rem;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.programme-table tbody td.table-label {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    color: #2E86C1;
+    background: #EBF5FB;
+    width: 25%;
+    min-width: 160px;
+    border: none;
+    letter-spacing: 0.3px;
+    font-size: 0.95rem;
+    text-align: center;
+    border-radius: 6px;
 }
 
 .programme-table tbody td.table-value {
-    color: #111;
-    line-height: 1.5;
+    color: #1a1a2e;
+    line-height: 1.7;
     text-align: left;
+    font-size: 0.95rem;
+    background: #F4FAFE;
+    padding-left: 32px;
+}
+
+.programme-table .table-total-row td {
+    background: #D6EAF8;
+    font-weight: 700;
+    color: #1a1a2e;
+    border: none;
+    font-size: 0.95rem;
 }
 
 .highlight-orange {
@@ -2336,10 +2413,11 @@ select {
     .programme-table {
         min-width: 100%;
         border: none;
+        border-spacing: 6px;
     }
 
     .programme-table tr {
-        border-bottom: 1px solid var(--border);
+        border-bottom: none;
     }
 
     .programme-table thead tr {
@@ -2353,17 +2431,20 @@ select {
     .programme-table thead th.table-header-value {
         padding: 16px;
         font-size: 1rem;
-        background: var(--primary-light);
+        background: #2E86C1;
         color: #fff;
+        border-radius: 6px;
     }
 
     .programme-table tbody td.table-label {
-        background: var(--bg-surface);
+        background: #EBF5FB;
         padding: 14px 16px 4px;
         text-align: center;
         white-space: normal;
         border-bottom: none;
         font-size: 0.95rem;
+        color: #2E86C1;
+        border-radius: 6px 6px 0 0;
     }
 
     .programme-table tbody td.table-value {
@@ -2371,6 +2452,8 @@ select {
         text-align: center;
         border-bottom: none;
         font-size: 0.9rem;
+        background: #F4FAFE;
+        border-radius: 0 0 6px 6px;
     }
 
     .features-grid {
@@ -2560,32 +2643,40 @@ select {
     .programme-table-wrapper {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        border: 1px solid #0B3D91;
+        border: none;
         margin: 15px 0 25px;
-        border-radius: 4px;
-        background: #fff;
+        border-radius: 0;
+        background: transparent;
     }
 
     .programme-table {
         width: 100%;
         min-width: 650px;
-        border-collapse: collapse;
+        border-collapse: separate;
+        border-spacing: 6px;
     }
 
     .programme-table thead th,
     .programme-table tbody td {
-        padding: 8px 10px;
+        padding: 10px 12px;
         font-size: 0.8rem;
-        border: 1px solid #ddd;
+        border: none;
     }
 
-    .programme-table thead th.table-header-label,
+    .programme-table thead th.table-header-label {
+        width: 25%;
+        min-width: 130px;
+        background: #2E86C1;
+        color: #fff;
+        border: none;
+    }
+
     .programme-table tbody td.table-label {
         width: 25%;
         min-width: 130px;
-        background: #0B3D91;
-        color: #fff;
-        border: 1px solid #fff;
+        background: #EBF5FB;
+        color: #2E86C1;
+        border: none;
     }
 
     .marquee-item {
