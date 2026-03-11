@@ -2439,21 +2439,74 @@ select {
     .programme-table tbody td.table-label {
         background: #EBF5FB;
         padding: 14px 16px 4px;
-        text-align: center;
+        text-align: left;
         white-space: normal;
         border-bottom: none;
         font-size: 0.95rem;
         color: #2E86C1;
         border-radius: 6px 6px 0 0;
+        font-weight: 700;
     }
 
     .programme-table tbody td.table-value {
         padding: 4px 16px 16px;
-        text-align: center;
+        text-align: left;
         border-bottom: none;
         font-size: 0.9rem;
         background: #F4FAFE;
         border-radius: 0 0 6px 6px;
+        padding-left: 16px;
+    }
+
+    /* For multi-column tables, show each row as a card */
+    .programme-table tbody td[style*="text-align: center"] {
+        text-align: left !important;
+    }
+
+    .programme-table tbody td[rowspan] {
+        margin-top: 8px;
+    }
+
+    .programme-table thead th.table-header-value {
+        text-align: left;
+    }
+
+    .programme-table .table-total-row td {
+        text-align: left !important;
+    }
+
+    /* Data-label display for multi-column tables on mobile */
+    .programme-table tbody td.table-value[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-family: var(--font-primary);
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #2E86C1;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 3px;
+    }
+
+    .programme-table tbody td.table-value[data-label] {
+        padding: 10px 16px;
+        border-radius: 6px;
+        margin-bottom: 4px;
+    }
+
+    /* Card-style rows with spacing */
+    .programme-table tbody tr {
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-left: 3px solid #2E86C1;
+        border-radius: 6px;
+        background: #F4FAFE;
+        overflow: hidden;
+    }
+
+    .programme-table .table-total-row {
+        border-left-color: var(--accent);
+        background: #D6EAF8;
     }
 
     .features-grid {
@@ -2641,42 +2694,125 @@ select {
     }
 
     .programme-table-wrapper {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        overflow-x: visible;
         border: none;
-        margin: 15px 0 25px;
+        margin: 12px 0 20px;
         border-radius: 0;
         background: transparent;
     }
 
     .programme-table {
         width: 100%;
-        min-width: 650px;
+        min-width: 100%;
         border-collapse: separate;
-        border-spacing: 6px;
+        border-spacing: 4px;
+    }
+
+    .programme-table,
+    .programme-table thead,
+    .programme-table tbody,
+    .programme-table th,
+    .programme-table td,
+    .programme-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .programme-table thead th.table-header-label {
+        display: none;
     }
 
     .programme-table thead th,
     .programme-table tbody td {
-        padding: 10px 12px;
-        font-size: 0.8rem;
-        border: none;
-    }
-
-    .programme-table thead th.table-header-label {
-        width: 25%;
-        min-width: 130px;
-        background: #2E86C1;
-        color: #fff;
+        padding: 10px 14px;
+        font-size: 0.82rem;
         border: none;
     }
 
     .programme-table tbody td.table-label {
-        width: 25%;
-        min-width: 130px;
+        width: 100%;
+        min-width: unset;
         background: #EBF5FB;
         color: #2E86C1;
         border: none;
+        text-align: left;
+        font-weight: 700;
+        padding: 12px 14px 4px;
+        border-radius: 6px 6px 0 0;
+        font-size: 0.85rem;
+    }
+
+    .programme-table tbody td.table-value {
+        text-align: left !important;
+        padding: 4px 14px 12px;
+        padding-left: 14px;
+        border-radius: 0 0 6px 6px;
+        font-size: 0.82rem;
+    }
+
+    .programme-table tbody td[style*="text-align: center"] {
+        text-align: left !important;
+    }
+
+    .programme-table .table-total-row td {
+        text-align: left !important;
+    }
+
+    .programme-table thead th.table-header-value {
+        text-align: left;
+        padding: 14px;
+        font-size: 0.9rem;
+        background: #2E86C1;
+        color: #fff;
+        border-radius: 6px;
+    }
+
+    .programme-details-title {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+    }
+
+    .table-subtitle {
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        text-align: left;
+    }
+
+    .table-subtitle::after {
+        margin: 8px 0 0;
+    }
+
+    /* Data-label display for multi-column tables on small mobile */
+    .programme-table tbody td.table-value[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-family: var(--font-primary);
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #2E86C1;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+    }
+
+    .programme-table tbody td.table-value[data-label] {
+        padding: 8px 14px;
+        border-radius: 6px;
+        margin-bottom: 3px;
+    }
+
+    /* Card-style rows with spacing */
+    .programme-table tbody tr {
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        border-left: 3px solid #2E86C1;
+        border-radius: 6px;
+        background: #F4FAFE;
+        overflow: hidden;
+    }
+
+    .programme-table .table-total-row {
+        border-left-color: var(--accent);
+        background: #D6EAF8;
     }
 
     .marquee-item {
@@ -2685,5 +2821,292 @@ select {
 
     .modal-content {
         padding: 30px 20px;
+    }
+}
+
+/* ===== CTA BANNER: PHYSICS & CHEMISTRY FOCUSED SUPPORT ===== */
+.cta-phy-chem-banner {
+    position: relative;
+    margin: 60px 0 20px;
+    padding: 48px 40px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #0B3D91 0%, #1565C0 40%, #0D47A1 100%);
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(11, 61, 145, 0.25), 0 0 0 1px rgba(255,255,255,0.08) inset;
+}
+
+.cta-banner-glow {
+    position: absolute;
+    top: -60%;
+    right: -15%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(232, 117, 26, 0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: cta-glow-pulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes cta-glow-pulse {
+    0% { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.15); }
+}
+
+.cta-banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-banner-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: rgba(232, 117, 26, 0.2);
+    border: 1px solid rgba(232, 117, 26, 0.45);
+    border-radius: 9999px;
+    font-family: var(--font-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #F5921C;
+    margin-bottom: 20px;
+}
+
+.cta-banner-badge i {
+    font-size: 0.85rem;
+}
+
+.cta-banner-title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.3;
+    color: #ffffff;
+    margin-bottom: 16px;
+    max-width: 700px;
+}
+
+.cta-highlight {
+    position: relative;
+    display: inline-block;
+    color: #FFC107;
+}
+
+.cta-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: rgba(255, 193, 7, 0.2);
+    border-radius: 4px;
+    z-index: -1;
+}
+
+.cta-banner-desc {
+    font-size: 0.98rem;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.75;
+    margin-bottom: 30px;
+    max-width: 760px;
+}
+
+.cta-banner-desc strong {
+    color: #fff;
+}
+
+/* Subject cards grid */
+.cta-banner-subjects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.cta-subject-card {
+    display: flex;
+    gap: 18px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    transition: all 0.35s ease;
+}
+
+.cta-subject-card:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.cta-subject-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    color: #fff;
+}
+
+.cta-physics-icon {
+    background: linear-gradient(135deg, #42A5F5, #1E88E5);
+    box-shadow: 0 6px 20px rgba(30, 136, 229, 0.35);
+}
+
+.cta-chemistry-icon {
+    background: linear-gradient(135deg, #66BB6A, #43A047);
+    box-shadow: 0 6px 20px rgba(67, 160, 71, 0.35);
+}
+
+.cta-subject-info h4 {
+    font-family: var(--font-primary);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.cta-subject-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.cta-subject-info ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+}
+
+.cta-subject-info ul li i {
+    font-size: 0.72rem;
+    color: #FFC107;
+    min-width: 14px;
+}
+
+/* Highlight chips */
+.cta-banner-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.cta-highlight-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.cta-highlight-item:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cta-highlight-item i {
+    color: #FFC107;
+    font-size: 0.9rem;
+}
+
+/* CTA Button */
+.cta-banner-btn {
+    font-size: 1rem;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #E8751A, #F5921C) !important;
+    box-shadow: 0 6px 24px rgba(232, 117, 26, 0.45);
+    border-radius: 9999px;
+    font-weight: 700;
+}
+
+.cta-banner-btn:hover {
+    box-shadow: 0 10px 36px rgba(232, 117, 26, 0.6);
+    transform: translateY(-3px) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cta-phy-chem-banner {
+        padding: 32px 20px;
+        margin: 40px 0 16px;
+        border-radius: 16px;
+    }
+
+    .cta-banner-subjects {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .cta-subject-card {
+        padding: 18px;
+    }
+
+    .cta-banner-title {
+        font-size: 1.15rem;
+    }
+
+    .cta-banner-highlights {
+        gap: 8px;
+    }
+
+    .cta-highlight-item {
+        font-size: 0.78rem;
+        padding: 6px 14px;
+    }
+
+    .cta-banner-btn {
+        padding: 12px 24px;
+        font-size: 0.92rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cta-banner-glow {
+        width: 280px;
+        height: 280px;
+        top: -30%;
+        right: -20%;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-phy-chem-banner {
+        padding: 24px 16px;
+    }
+
+    .cta-subject-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .cta-banner-highlights {
+        flex-direction: column;
+    }
+
+    .cta-highlight-item {
+        width: 100%;
+        justify-content: flex-start;
     }
 }
