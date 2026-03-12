@@ -1,8 +1,13 @@
 
 // ===== PARTICLES =====
 function createParticles() {
+    // Disable particles entirely on mobile devices for performance
+    if (window.innerWidth < 768) return;
+    
     const container = document.getElementById('particles');
-    const count = window.innerWidth < 768 ? 15 : 30;
+    if (!container) return;
+    
+    const count = 30; // Only runs on desktop
     for (let i = 0; i < count; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
@@ -21,12 +26,19 @@ createParticles();
 // ===== HEADER SCROLL =====
 const header = document.getElementById('header');
 const backToTop = document.getElementById('backToTop');
+let isScrolling = false;
 
 window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    header.classList.toggle('scrolled', scrollY > 50);
-    backToTop.classList.toggle('show', scrollY > 600);
-});
+    if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            if (header) header.classList.toggle('scrolled', scrollY > 50);
+            if (backToTop) backToTop.classList.toggle('show', scrollY > 600);
+            isScrolling = false;
+        });
+        isScrolling = true;
+    }
+}, { passive: true });
 
 backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -51,21 +63,28 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 // ===== ACTIVE NAV LINK =====
 const sections = document.querySelectorAll('section[id]');
+let isNavScroll = false;
 window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY + 200;
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-        if (navLink) {
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                navLink.classList.add('active');
-            }
-        }
-    });
-});
+    if (!isNavScroll) {
+        window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY + 200;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+                if (navLink) {
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        navLink.classList.add('active');
+                    }
+                }
+            });
+            isNavScroll = false;
+        });
+        isNavScroll = true;
+    }
+}, { passive: true });
 
 // ===== SCROLL ANIMATIONS =====
 const observerOptions = {
@@ -247,13 +266,20 @@ if (window.innerWidth > 1024) {
 
 // ===== PARALLAX ON HERO SHAPES =====
 if (window.innerWidth > 768) {
+    let parallaxTicking = false;
     window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        document.querySelectorAll('.hero-shape').forEach((shape, i) => {
-            const speed = (i + 1) * 0.03;
-            shape.style.transform = `translateY(${scrollY * speed}px)`;
-        });
-    });
+        if (!parallaxTicking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                document.querySelectorAll('.hero-shape').forEach((shape, i) => {
+                    const speed = (i + 1) * 0.03;
+                    shape.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+                parallaxTicking = false;
+            });
+            parallaxTicking = true;
+        }
+    }, { passive: true });
 }
 
 

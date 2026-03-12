@@ -117,6 +117,8 @@ select {
 .section {
     padding: 100px 0;
     position: relative;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
 }
 
 .text-center {
@@ -261,6 +263,7 @@ select {
     border-radius: 50%;
     background: rgba(11, 61, 145, 0.08);
     animation: float-particle linear infinite;
+    will-change: transform, opacity;
 }
 
 @keyframes float-particle {
@@ -452,6 +455,7 @@ select {
     border-radius: 50%;
     filter: blur(80px);
     opacity: 0.15;
+    will-change: transform;
 }
 
 .shape-1 {
@@ -761,6 +765,7 @@ select {
     animation: marquee 30s linear infinite;
     white-space: nowrap;
     width: max-content;
+    will-change: transform;
 }
 
 .marquee-item {
@@ -2373,6 +2378,11 @@ select {
 
     .nav-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Disable heavy animations on mobile */
+    .particles, .hero-bg-shapes {
+        display: none !important;
     }
 
     .hero {
