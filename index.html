@@ -30,8 +30,8 @@
       .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 0; }
       .nav { display: flex; align-items: center; justify-content: space-between; }
       .logo-img { height: 48px; width: auto; }
-      .hero { display: flex; align-items: center; position: relative; padding: 80px 0 40px; overflow: hidden; }
-      .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+      .hero { display: flex; align-items: center; position: relative; padding: 120px 0 80px; min-height: 85vh; overflow: hidden; }
+      .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; position: relative; z-index: 1; padding: 40px 0; }
       .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
       .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
       @media (max-width: 1024px) { .hero-content { grid-template-columns: 1fr; text-align: center; gap: 40px; } }
@@ -128,15 +128,19 @@
                         <h3>Admission Enquiry</h3>
                         <p>Narayana NEET Academy in kolkata, West Bengal.</p>
                     </div>
-                    <form class="contact-form style-screenshot-form" id="heroContactForm">
+                    <form class="contact-form style-screenshot-form" id="heroContactForm" action="https://formsubmit.co/scg.designer.official@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Admission Enquiry - Hero Form">
+                        <input type="hidden" name="_template" value="table">
                         <div class="form-group">
-                            <input type="text" id="heroStudentName" placeholder="Full Name" aria-label="Full Name" required>
+                            <input type="text" id="heroStudentName" name="student_name" placeholder="Full Name" aria-label="Full Name" 
+                                pattern="[A-Za-z\s]+" title="Only alphabetical characters and spaces are allowed" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="heroEmail" placeholder="Email" aria-label="Email" required>
+                            <input type="email" id="heroEmail" name="email" placeholder="Email" aria-label="Email" 
+                                pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}" title="Please enter a valid email address" required>
                         </div>
                         <div class="form-group">
-                            <select id="heroArea" aria-label="Select Area" required>
+                            <select id="heroArea" name="preferred_area" aria-label="Select Area" required>
                                 <option value="" disabled selected>Select Area</option>
                                 <option value="BERHAMPORE">BERHAMPORE</option>
                                 <option value="GEMS-THAKURPUKUR">GEMS-THAKURPUKUR</option>
@@ -149,10 +153,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="heroLocation" placeholder="Enter Your Location" aria-label="Your Location" required>
+                            <input type="text" id="heroLocation" name="location" placeholder="Enter Your Location" aria-label="Your Location" 
+                                pattern="[A-Za-z0-9\s,.\-]+" title="Only alphanumeric characters, spaces, and , . - are allowed" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="heroPhone" placeholder="Your Phone Number" aria-label="Phone Number" required>
+                            <input type="tel" id="heroPhone" name="phone" placeholder="Your Phone Number" aria-label="Phone Number" 
+                                pattern="[0-9]{10}" maxlength="10" title="Please enter a valid 10-digit phone number" required>
                         </div>
                         <button type="submit" class="btn btn-full btn-otp" id="heroSubmitBtn">
                             <span>Get OTP</span>
@@ -599,6 +605,48 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <!-- CTA Banner: Admission Open 2026-27 -->
+            <div class="cta-admission-banner animate-on-scroll" id="admissionCTA">
+                <div class="cta-banner-glow"></div>
+                <div class="cta-banner-content">
+                    <div class="cta-banner-badge">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Academic Session 2026-27</span>
+                    </div>
+                    <h3 class="cta-banner-title">
+                        Admissions <span class="cta-highlight">Open</span> for NEET Crash Course 2026
+                    </h3>
+                    <p class="cta-banner-desc">
+                        Prepare with the leaders in medical entrance coaching. Get access to top-tier faculty, 
+                        scientifically designed micro-schedules, and high-quality study material to boost your NEET score.
+                    </p>
+                    <div class="cta-admission-features">
+                        <div class="cta-admission-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Up to 100% Scholarship</span>
+                        </div>
+                        <div class="cta-admission-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Expert NEET-specialist faculty</span>
+                        </div>
+                        <div class="cta-admission-item">
+                            <i class="fas fa-book-open"></i>
+                            <span>Comprehensive Study Material</span>
+                        </div>
+                    </div>
+                    <div class="cta-banner-actions">
+                        <a href="#contact" class="btn btn-primary cta-banner-btn">
+                            <span>Enroll For Admissions 2026-27</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <div class="cta-seats-label">
+                            <span class="pulse-indicator"></span>
+                            Last Few Seats Remaining!
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <h3 class="table-subtitle animate-on-scroll">TEACHING & DOUBTS (CRASH COURSE)</h3>
@@ -1142,15 +1190,19 @@
                         <h3>Admission Enquiry</h3>
                         <p>Narayana NEET Academy in kolkata, West Bengal.</p>
                     </div>
-                    <form class="contact-form style-screenshot-form" id="contactForm">
+                    <form class="contact-form style-screenshot-form" id="contactForm" action="https://formsubmit.co/scg.designer.official@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Admission Enquiry - Contact Form">
+                        <input type="hidden" name="_template" value="table">
                         <div class="form-group">
-                            <input type="text" id="studentName" placeholder="Full Name" aria-label="Full Name" required>
+                            <input type="text" id="studentName" name="student_name" placeholder="Full Name" aria-label="Full Name" 
+                                pattern="[A-Za-z\s]+" title="Only alphabetical characters and spaces are allowed" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" placeholder="Email" aria-label="Email" required>
+                            <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" 
+                                pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}" title="Please enter a valid email address" required>
                         </div>
                         <div class="form-group">
-                            <select id="area" aria-label="Select Area" required>
+                            <select id="area" name="preferred_area" aria-label="Select Area" required>
                                 <option value="" disabled selected>Select Area</option>
                                 <option value="BERHAMPORE">BERHAMPORE</option>
                                 <option value="GEMS-THAKURPUKUR">GEMS-THAKURPUKUR</option>
@@ -1163,10 +1215,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="location" placeholder="Enter Your Location" aria-label="Your Location" required>
+                            <input type="text" id="location" name="location" placeholder="Enter Your Location" aria-label="Your Location" 
+                                pattern="[A-Za-z0-9\s,.\-]+" title="Only alphanumeric characters, spaces, and , . - are allowed" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" placeholder="Your Phone Number" aria-label="Phone Number" required>
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" aria-label="Phone Number" 
+                                pattern="[0-9]{10}" maxlength="10" title="Please enter a valid 10-digit phone number" required>
                         </div>
                         <button type="submit" class="btn btn-full btn-otp" id="submitBtn">
                             <span>Get OTP</span>
@@ -1282,15 +1336,19 @@
                     <h3>Admission Enquiry</h3>
                     <p>Narayana NEET Academy in kolkata, West Bengal.</p>
                 </div>
-                <form class="contact-form style-screenshot-form" id="modalContactForm">
+                <form class="contact-form style-screenshot-form" id="modalContactForm" action="https://formsubmit.co/scg.designer.official@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Admission Enquiry - Modal Form">
+                    <input type="hidden" name="_template" value="table">
                     <div class="form-group">
-                        <input type="text" id="modalStudentName" placeholder="Full Name" aria-label="Full Name" required>
+                        <input type="text" id="modalStudentName" name="student_name" placeholder="Full Name" aria-label="Full Name" 
+                            pattern="[A-Za-z\s]+" title="Only alphabetical characters and spaces are allowed" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="modalEmail" placeholder="Email" aria-label="Email" required>
+                        <input type="email" id="modalEmail" name="email" placeholder="Email" aria-label="Email" 
+                            pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}" title="Please enter a valid email address" required>
                     </div>
                     <div class="form-group">
-                        <select id="modalArea" aria-label="Select Area" required>
+                        <select id="modalArea" name="preferred_area" aria-label="Select Area" required>
                             <option value="" disabled selected>Select Area</option>
                             <option value="BERHAMPORE">BERHAMPORE</option>
                             <option value="GEMS-THAKURPUKUR">GEMS-THAKURPUKUR</option>
@@ -1303,10 +1361,12 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="modalLocation" placeholder="Enter Your Location" aria-label="Your Location" required>
+                        <input type="text" id="modalLocation" name="location" placeholder="Enter Your Location" aria-label="Your Location" 
+                            pattern="[A-Za-z0-9\s,.\-]+" title="Only alphanumeric characters, spaces, and , . - are allowed" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="modalPhone" placeholder="Your Phone Number" aria-label="Phone Number" required>
+                        <input type="tel" id="modalPhone" name="phone" placeholder="Your Phone Number" aria-label="Phone Number" 
+                            pattern="[0-9]{10}" maxlength="10" title="Please enter a valid 10-digit phone number" required>
                     </div>
                     <button type="submit" class="btn btn-full btn-otp" id="modalSubmitBtn">
                         <span>Get OTP</span>

@@ -153,16 +153,39 @@ function handleFormSubmit(form, btn) {
             e.preventDefault();
             btn.innerHTML = '<span>Submitting...</span><i class="fas fa-spinner fa-spin"></i>';
             btn.disabled = true;
-            setTimeout(() => {
-                btn.innerHTML = '<span>Submitted Successfully!</span><i class="fas fa-check"></i>';
-                btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    btn.innerHTML = '<span>Submitted Successfully!</span><i class="fas fa-check"></i>';
+                    btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                    setTimeout(() => {
+                        form.reset();
+                        btn.innerHTML = '<span>Get OTP</span>';
+                        btn.style.background = '';
+                        btn.disabled = false;
+                    }, 3000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                btn.innerHTML = '<span>Error! Try Again</span>';
+                btn.style.background = '#ef4444';
+                btn.disabled = false;
                 setTimeout(() => {
-                    form.reset();
                     btn.innerHTML = '<span>Get OTP</span>';
                     btn.style.background = '';
-                    btn.disabled = false;
                 }, 3000);
-            }, 1500);
+            });
         });
     }
 }
@@ -213,20 +236,42 @@ if (enrollModal && closeModalBtn) {
             modalSubmitBtn.innerHTML = '<span>Submitting...</span><i class="fas fa-spinner fa-spin"></i>';
             modalSubmitBtn.disabled = true;
 
-            setTimeout(() => {
-                modalSubmitBtn.innerHTML = '<span>Submitted Successfully!</span><i class="fas fa-check"></i>';
-                modalSubmitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+            const formData = new FormData(modalContactForm);
 
+            fetch(modalContactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    modalSubmitBtn.innerHTML = '<span>Submitted Successfully!</span><i class="fas fa-check"></i>';
+                    modalSubmitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+
+                    setTimeout(() => {
+                        modalContactForm.reset();
+                        modalSubmitBtn.innerHTML = '<span>Submit Enquiry</span><i class="fas fa-paper-plane"></i>';
+                        modalSubmitBtn.style.background = '';
+                        modalSubmitBtn.disabled = false;
+
+                        enrollModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }, 3000);
+                } else {
+                    throw new Error('Modal form submission failed');
+                }
+            })
+            .catch(error => {
+                modalSubmitBtn.innerHTML = '<span>Error! Try Again</span>';
+                modalSubmitBtn.style.background = '#ef4444';
+                modalSubmitBtn.disabled = false;
                 setTimeout(() => {
-                    modalContactForm.reset();
                     modalSubmitBtn.innerHTML = '<span>Submit Enquiry</span><i class="fas fa-paper-plane"></i>';
                     modalSubmitBtn.style.background = '';
-                    modalSubmitBtn.disabled = false;
-
-                    enrollModal.classList.remove('active');
-                    document.body.style.overflow = '';
                 }, 3000);
-            }, 1500);
+            });
         });
     }
 }
