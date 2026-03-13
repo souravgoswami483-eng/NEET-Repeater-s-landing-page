@@ -444,6 +444,46 @@ select {
     overflow: hidden;
 }
 
+/* ===== INFO MARQUEE ===== */
+.info-marquee-bar {
+    background: #0B3D91;
+    color: #ffffff;
+    padding: 12px 0;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee-scroll 40s linear infinite;
+    gap: 100px;
+}
+
+.marquee-item {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.marquee-item i {
+    color: #FBC02D;
+    font-size: 1.1rem;
+}
+
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 .hero-bg-shapes {
     position: absolute;
     inset: 0;
